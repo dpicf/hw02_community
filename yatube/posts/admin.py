@@ -5,13 +5,15 @@ from .models import Group, Post
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ("pk", "text", "pub_date", "author")
-    search_fields = ("text",)
+    search_fields = ("text", "author")
     list_filter = ("pub_date",)
     empty_value_display = "-пусто-"
 
 
 class GroupAdmin(admin.ModelAdmin):
-    list_display = ("title", "slug", "description",)
+    list_display = ("pk", "title", "slug", "description",)
+    search_fields = ("title", "slug")
+    prepopulated_fields = {"slug": ("title",)}
 
 
 admin.site.register(Post, PostAdmin)

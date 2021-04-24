@@ -4,10 +4,7 @@
 {% block content %}
 
     {% for post in posts %}
-    <h3>
-        Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
-    </h3>
-    <p>{{ post.text|linebreaksbr }}</p>
+    {% include "post.html" %} 
     {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
 
